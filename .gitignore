@@ -1,0 +1,16 @@
+# NPM
+node_modules
+npm-debug.log
+/package-lock.json
+/yarn-error.log
+/yarn.lock
+
+# Build
+.deploy_git
+
+# Global (additional insurance for someone who haven't add this in global gitignore)
+.DS_Store
+/.idea
+/.vscode
+/.idea
+/.history
