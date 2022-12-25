@@ -8,7 +8,7 @@
 
 ### 发布
 
-> npm publish
+> npm run publish
 
 ### 访问
 
