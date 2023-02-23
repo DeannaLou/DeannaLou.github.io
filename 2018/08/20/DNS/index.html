@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>从键入 URL 到页面渲染都经历了什么-草稿 | DeannaLou</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="客户端键入 URL用户键入 url，浏览器会先后经历 DNS寻址、TCP/IP建立链接、发出html请求、接收html的过程，此后浏览器将开始解析 html 中的内容生成 Dom、Cssom，并根据他们来计算所有可见元素的样式创建出 RenderTree，再为 RenderTree 中每一个 Layer（渲染层）确定元素的位置和尺寸，最终完成像素在屏幕上的绘制。 DNS 寻址TCP/IP建立链接（">
+<meta name="keywords" content="浏览器原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从键入 URL 到页面渲染都经历了什么-草稿">
+<meta property="og:url" content="http://deannalou.github.io/2018/08/20/DNS/index.html">
+<meta property="og:site_name" content="DeannaLou">
+<meta property="og:description" content="客户端键入 URL用户键入 url，浏览器会先后经历 DNS寻址、TCP/IP建立链接、发出html请求、接收html的过程，此后浏览器将开始解析 html 中的内容生成 Dom、Cssom，并根据他们来计算所有可见元素的样式创建出 RenderTree，再为 RenderTree 中每一个 Layer（渲染层）确定元素的位置和尺寸，最终完成像素在屏幕上的绘制。 DNS 寻址TCP/IP建立链接（">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2023-02-23T07:10:03.867Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从键入 URL 到页面渲染都经历了什么-草稿">
+<meta name="twitter:description" content="客户端键入 URL用户键入 url，浏览器会先后经历 DNS寻址、TCP/IP建立链接、发出html请求、接收html的过程，此后浏览器将开始解析 html 中的内容生成 Dom、Cssom，并根据他们来计算所有可见元素的样式创建出 RenderTree，再为 RenderTree 中每一个 Layer（渲染层）确定元素的位置和尺寸，最终完成像素在屏幕上的绘制。 DNS 寻址TCP/IP建立链接（">
+  
+    <link rel="alternate" href="/atom.xml" title="DeannaLou" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">DeannaLou</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://deannalou.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-DNS" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/20/DNS/" class="article-date">
+  <time datetime="2018-08-19T16:00:00.000Z" itemprop="datePublished">2018-08-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      从键入 URL 到页面渲染都经历了什么-草稿
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="客户端键入-URL"><a href="#客户端键入-URL" class="headerlink" title="客户端键入 URL"></a>客户端键入 URL</h2><p>用户键入 url，浏览器会先后经历 DNS寻址、TCP/IP建立链接、发出html请求、接收html的过程，此后浏览器将开始解析 html 中的内容生成 Dom、Cssom，并根据他们来计算所有可见元素的样式创建出 RenderTree，再为 RenderTree 中每一个 Layer（渲染层）确定元素的位置和尺寸，最终完成像素在屏幕上的绘制。</p>
+<h2 id="DNS-寻址"><a href="#DNS-寻址" class="headerlink" title="DNS 寻址"></a>DNS 寻址</h2><h2 id="TCP-IP建立链接（http2-http3）"><a href="#TCP-IP建立链接（http2-http3）" class="headerlink" title="TCP/IP建立链接（http2/http3）"></a>TCP/IP建立链接（http2/http3）</h2><h2 id="接受-html（web缓存机制）"><a href="#接受-html（web缓存机制）" class="headerlink" title="接受 html（web缓存机制）"></a>接受 html（web缓存机制）</h2><h2 id="HTML解析过程"><a href="#HTML解析过程" class="headerlink" title="HTML解析过程"></a>HTML解析过程</h2><ol>
+<li>主线程开始从上到下执行以构建 Dom 树，直到最后一个字节被解析完毕 <ul>
+<li>当遇到立即执行的 script 脚本时，文档解析停止，直到执行完成</li>
+<li>在执行脚本时，另一个线程会解析文档的其余部分，找到外部资源并触发加载，这个过程也叫推测解析。</li>
+<li>当找到一个外部链接，浏览器将生成一个请求（js、css、img）</li>
+<li>无 async、defer 属性（同步js）的 script 资源请求将阻塞后续html解析，只有在资源请求并执行结束后才继续解析。</li>
+<li>css、img 的资源请求不会阻塞后续html解析，浏览器在触发资源请求的同时仍继续解析。</li>
+<li>css 的资源请求在加载和解析时，Firefox 会阻塞所有 script 脚本执行；WebKit 仅在 script 脚本试图访问某些可能未生效的样式属性时才阻止脚本。</li>
+</ul>
+</li>
+<li>构建 Dom 树时，同时会构建 cssom 树。【至此，html已解析完成，如果同步的Js执行完成，将进行 DomReady 打点】<ul>
+<li>Dom 树种有可视化节点（div、span等）、非可视化节点（script、meta、link、title等）。</li>
+<li>cssom 树构建不会影响解析。</li>
+<li>Dom 树构建的同时会构建 RenderTree，并计算每个节点的样式。Dom树是从代码层面输出的层级，渲染树是通过是否可视来输出的层级（只有可视的节点）。</li>
+<li>设置成 defer 的 script 脚本虽然不会阻塞 html 解析，但是会阻塞布局，在html解析完成后才开始下载脚本，执行脚本并触发 Dom 树更新，再进行布局。而async的脚本则不会阻塞布局和绘制。</li>
+</ul>
+</li>
+<li>布局</li>
+<li>绘制。绘制第一个像素时会完成 FP 的打点。<br>当 html 中Dom节点很多时渲染引擎会尝试先绘制一部分再解析。<br>当 html 中Dom节点少的时候会在解析完成之后再统一绘制。</li>
+</ol>
+<h2 id="性能指标及含义、治理建议"><a href="#性能指标及含义、治理建议" class="headerlink" title="性能指标及含义、治理建议"></a>性能指标及含义、治理建议</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://deannalou.github.io/2018/08/20/DNS/" data-id="clegpl22g0000shoae2jjz0r5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/浏览器原理/">浏览器原理</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/02/21/BFC/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          BFC-草稿
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/06/24/jsTypeTransfer/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">js 中的隐式转换</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/全栈/">全栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器原理/">浏览器原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活中的小确幸/">生活中的小确幸</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/全栈/" style="font-size: 10px;">全栈</a> <a href="/tags/浏览器原理/" style="font-size: 10px;">浏览器原理</a> <a href="/tags/生活中的小确幸/" style="font-size: 15px;">生活中的小确幸</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/02/23/position/">position 定位</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/01/health/">减肥四步法</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/01/cookbook/">菜单炒一本</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/31/leetCode_coin/">力扣算法题1-发奖金</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/31/mongodb/">mongodb-安装于使用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 DeannaLou<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
