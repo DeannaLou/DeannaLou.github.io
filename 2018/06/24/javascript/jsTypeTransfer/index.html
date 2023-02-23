@@ -11,14 +11,14 @@
 <meta name="keywords" content="Javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js 中的隐式转换">
-<meta property="og:url" content="http://deannalou.github.io/2018/06/24/jsTypeTransfer/index.html">
+<meta property="og:url" content="http://deannalou.github.io/2018/06/24/javascript/jsTypeTransfer/index.html">
 <meta property="og:site_name" content="DeannaLou">
 <meta property="og:description" content="js 的值类型 number string boolean null undefined object  js 把 number、string、boolean、null、undefined 归成原始值。array 与 function 都是 object 的特例。 js 是弱类型语言所谓的弱类型，就是说你不必在声明变量时就指定它的类型，并且你可以给一个变量赋任意类型的值。 123var a = 1">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5370440-6ef0cea0075e9efc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5370440-377983feb6f1b508.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5370440-54b4ff7816f75552.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2023-02-23T06:23:15.135Z">
+<meta property="og:updated_time" content="2023-02-23T07:18:21.568Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js 中的隐式转换">
 <meta name="twitter:description" content="js 的值类型 number string boolean null undefined object  js 把 number、string、boolean、null、undefined 归成原始值。array 与 function 都是 object 的特例。 js 是弱类型语言所谓的弱类型，就是说你不必在声明变量时就指定它的类型，并且你可以给一个变量赋任意类型的值。 123var a = 1">
@@ -69,9 +69,9 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-jsTypeTransfer" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-javascript/jsTypeTransfer" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/06/24/jsTypeTransfer/" class="article-date">
+    <a href="/2018/06/24/javascript/jsTypeTransfer/" class="article-date">
   <time datetime="2018-06-23T16:00:00.000Z" itemprop="datePublished">2018-06-24</time>
 </a>
     
@@ -102,8 +102,10 @@
 <p>js 把 number、string、boolean、null、undefined 归成原始值。<br>array 与 function 都是 object 的特例。</p>
 <h2 id="js-是弱类型语言"><a href="#js-是弱类型语言" class="headerlink" title="js 是弱类型语言"></a>js 是弱类型语言</h2><p>所谓的弱类型，就是说你不必在声明变量时就指定它的类型，并且你可以给一个变量赋任意类型的值。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;  // 声明一个变量，并赋一个 number 类型的值</span><br><span class="line">a = &quot;34&quot;； // 赋其他类型的值</span><br><span class="line">a;  // &gt;&gt; &quot;34&quot;</span><br></pre></td></tr></table></figure>
+
 <p>因为它的弱类型特性，在期望某种类型的值而当前值类型不符合时，js 会根据固定的规则来进行隐式的转换。我们最常见的隐式转换之一就是 + 操作符了。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 把 number 12 转换成了 string &quot;12&quot;，并做了字符串拼接的处理</span><br><span class="line">a + 12;   //  &gt;&gt; &quot;3412&quot;</span><br><span class="line">// 把 String &quot;34&quot; 转换成了 number 34，并做了数学减运算</span><br><span class="line">a - 12;  //  &gt;&gt;  22</span><br></pre></td></tr></table></figure>
+
 <h2><a id="type_convert">隐式转换规则表</a></h2>
 
 <table>
@@ -116,8 +118,7 @@
 <th>转换为object</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>undefined</td>
 <td>“undefined”</td>
 <td>NaN</td>
@@ -243,10 +244,10 @@
 <td>true</td>
 <td>-</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>来看一道题目:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var s = &quot;&quot;;</span><br><span class="line">s.x = &quot;1&quot;;</span><br><span class="line">console.log(s.x); // undefined</span><br></pre></td></tr></table></figure>
+
 <p>首先，看到 s 是一个 string 型的，那么 s.x = “1” 为什么不会报错？</p>
 <blockquote>
 <p>是因为我们的 “.” 运算符期望左边的值是一个对象，所以隐式转换成了一个对象，也就是上表中的 new String(“”)。</p>
@@ -291,6 +292,7 @@
 </blockquote>
 <p>明确需要 Boolean 的地方，很常见的例子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var o = &#123;&#125;;</span><br><span class="line">if (o) &#123;  // 所有的对象都是真值</span><br><span class="line">// doSth...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="function-使用-valueOf、toString"><a href="#function-使用-valueOf、toString" class="headerlink" title="function 使用 valueOf、toString"></a>function 使用 valueOf、toString</h2><p>考虑下边这道题：</p>
 <blockquote>
 <p>实现 add 方法，使其可如此使用: add(1)(2,4,5,7)(9)</p>
@@ -301,7 +303,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://deannalou.github.io/2018/06/24/jsTypeTransfer/" data-id="clegpl22q0005shoa804h0inh" class="article-share-link">Share</a>
+      <a data-url="http://deannalou.github.io/2018/06/24/javascript/jsTypeTransfer/" data-id="clegss93o000cjvoaoi7l5dgf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
@@ -312,7 +314,7 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/08/20/DNS/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/08/20/web/DNS/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
@@ -338,7 +340,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/全栈/">全栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器原理/">浏览器原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活中的小确幸/">生活中的小确幸</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/全栈/">全栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器原理/">浏览器原理</a></li></ul>
     </div>
   </div>
 
@@ -348,7 +350,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/全栈/" style="font-size: 10px;">全栈</a> <a href="/tags/浏览器原理/" style="font-size: 10px;">浏览器原理</a> <a href="/tags/生活中的小确幸/" style="font-size: 15px;">生活中的小确幸</a>
+      <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/全栈/" style="font-size: 10px;">全栈</a> <a href="/tags/浏览器原理/" style="font-size: 10px;">浏览器原理</a>
     </div>
   </div>
 
@@ -370,23 +372,23 @@
       <ul>
         
           <li>
-            <a href="/2023/02/23/position/">position 定位</a>
+            <a href="/2023/02/23/css/position/">position 定位</a>
           </li>
         
           <li>
-            <a href="/2023/02/01/health/">减肥四步法</a>
+            <a href="/2023/01/31/javascript/leetcode_coin/">力扣算法题1-发奖金</a>
           </li>
         
           <li>
-            <a href="/2023/02/01/cookbook/">菜单炒一本</a>
+            <a href="/2023/01/31/fullstack/mongodb/">mongodb-安装于使用</a>
           </li>
         
           <li>
-            <a href="/2023/01/31/leetCode_coin/">力扣算法题1-发奖金</a>
+            <a href="/2020/08/01/javascript/promise/">手写 Promise</a>
           </li>
         
           <li>
-            <a href="/2023/01/31/mongodb/">mongodb-安装于使用</a>
+            <a href="/2020/02/21/css/BFC/">BFC-草稿</a>
           </li>
         
       </ul>
