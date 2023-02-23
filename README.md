@@ -6,5 +6,8 @@
 ### 编辑博客
 到 /source/_posts 中编辑 md 或新增 md 文件
 
+### hexo g
+生成页面
+
 ### hexo d -g
 上传页面
