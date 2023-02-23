@@ -5,20 +5,20 @@
   
 
   
-  <title>力扣算法题1-发奖金 | DeannaLou</title>
+  <title>力扣算法题1-发 Leet coin-草稿 | DeannaLou</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目https://leetcode.cn/problems/coin-bonus 测试用例https://leetcode.cn/submissions/detail/398908470/testcase/ 解法这道题的难点在于，怎么做到高性能，leetCode 给的测试用例最大的能到5w左右，性能不好会执行超时。 1234567891011121314151617181920212223242">
+  <meta name="description" content="题目https://leetcode.cn/problems/coin-bonus 解法最开始的思路是:  遍历 leadership，建一个 map 表示领导到直属下级的关系，类似 { 1: { coin, memberList: [2,4,6] } 遍历 operations，如果遇到方式 1 就增加 map[1].coin，遇到方式 2 就拿到所有子下属（递归遍历 map[leader].m">
 <meta name="keywords" content="Javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="力扣算法题1-发奖金">
+<meta property="og:title" content="力扣算法题1-发 Leet coin-草稿">
 <meta property="og:url" content="http://deannalou.github.io/2023/01/31/javascript/leetcode_coin/index.html">
 <meta property="og:site_name" content="DeannaLou">
-<meta property="og:description" content="题目https://leetcode.cn/problems/coin-bonus 测试用例https://leetcode.cn/submissions/detail/398908470/testcase/ 解法这道题的难点在于，怎么做到高性能，leetCode 给的测试用例最大的能到5w左右，性能不好会执行超时。 1234567891011121314151617181920212223242">
+<meta property="og:description" content="题目https://leetcode.cn/problems/coin-bonus 解法最开始的思路是:  遍历 leadership，建一个 map 表示领导到直属下级的关系，类似 { 1: { coin, memberList: [2,4,6] } 遍历 operations，如果遇到方式 1 就增加 map[1].coin，遇到方式 2 就拿到所有子下属（递归遍历 map[leader].m">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2023-02-23T07:55:03.264Z">
+<meta property="og:updated_time" content="2023-02-23T08:44:58.295Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="力扣算法题1-发奖金">
-<meta name="twitter:description" content="题目https://leetcode.cn/problems/coin-bonus 测试用例https://leetcode.cn/submissions/detail/398908470/testcase/ 解法这道题的难点在于，怎么做到高性能，leetCode 给的测试用例最大的能到5w左右，性能不好会执行超时。 1234567891011121314151617181920212223242">
+<meta name="twitter:title" content="力扣算法题1-发 Leet coin-草稿">
+<meta name="twitter:description" content="题目https://leetcode.cn/problems/coin-bonus 解法最开始的思路是:  遍历 leadership，建一个 map 表示领导到直属下级的关系，类似 { 1: { coin, memberList: [2,4,6] } 遍历 operations，如果遇到方式 1 就增加 map[1].coin，遇到方式 2 就拿到所有子下属（递归遍历 map[leader].m">
   
     <link rel="alternate" href="/atom.xml" title="DeannaLou" type="application/atom+xml">
   
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      力扣算法题1-发奖金
+      力扣算法题1-发 Leet coin-草稿
     </h1>
   
 
@@ -88,10 +88,16 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.cn/problems/coin-bonus" target="_blank" rel="noopener">https://leetcode.cn/problems/coin-bonus</a></p>
-<h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><p><a href="https://leetcode.cn/submissions/detail/398908470/testcase/" target="_blank" rel="noopener">https://leetcode.cn/submissions/detail/398908470/testcase/</a></p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>这道题的难点在于，怎么做到高性能，leetCode 给的测试用例最大的能到5w左右，性能不好会执行超时。</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>最开始的思路是:</p>
+<ol>
+<li>遍历 leadership，建一个 map 表示领导到直属下级的关系，类似 <code>{ 1: { coin, memberList: [2,4,6] }</code></li>
+<li>遍历 operations，如果遇到方式 1 就增加 map[1].coin，遇到方式 2 就拿到所有子下属（递归遍历 map[leader].memberList 拿到所有子下属），并增加他们的 coin，遇到方式 3 再拿到所有子下属的 coin 加和。</li>
+</ol>
+<p>代码很快就写完了，但是执行超时！于是重新审视这道题，如果第 2 步中的那道所有子下属列表的操作能在第 1 步中拿到，那么就不需要多次去遍历了，修改如下：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bonus = <span class="function"><span class="keyword">function</span> (<span class="params">n, leadership, operations</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 此时把每个人的上级、下级的关系静态化，而不是只记录直系领导和下属，是处于性能的考虑。</span></span><br><span class="line">  <span class="comment">// operations 传参中会多次要求输出，如果每一次输出时都临时遍历某员工的上级下级，成本是巨大的</span></span><br><span class="line">  <span class="keyword">let</span> memberMap = &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 1: &#123;</span></span><br><span class="line"><span class="comment">     *  memberList: [], // 存储部门下所有的人</span></span><br><span class="line"><span class="comment">     *  leaderList: [], // 存储此人的领导们</span></span><br><span class="line"><span class="comment">     *  coin: 0, // 存储部门所有人获得的 coin 之和</span></span><br><span class="line"><span class="comment">     * &#125;</span></span><br><span class="line"><span class="comment">     * */</span></span><br><span class="line">  &#125;;</span><br><span class="line">  leadership.forEach(<span class="function">(<span class="params">[leader, member]</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!memberMap[leader])</span><br><span class="line">      memberMap[leader] = &#123;</span><br><span class="line">        memberList: [], <span class="comment">// 可用 Set 也可Array，但执行次数多的情况下 Array 性能比 Set 好</span></span><br><span class="line">        leaderList: [],</span><br><span class="line">        coin: <span class="number">0</span>,</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">if</span> (!memberMap[member])</span><br><span class="line">      memberMap[member] = &#123;</span><br><span class="line">        memberList: [], </span><br><span class="line">        leaderList: [],</span><br><span class="line">        coin: <span class="number">0</span>,</span><br><span class="line">      &#125;;</span><br><span class="line">    memberMap[member].leaderList.push(leader);</span><br><span class="line">    memberMap[leader].memberList.push(member);</span><br><span class="line">    memberMap[leader].leaderList.forEach(<span class="function">(<span class="params">v</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 成员的领导人数变更。领导的领导也是领导</span></span><br><span class="line">      <span class="keyword">if</span> (memberMap[member].leaderList.indexOf(v) === <span class="number">-1</span>) &#123; <span class="comment">// indexOf 的性能比 some 的性能好</span></span><br><span class="line">        memberMap[member].leaderList.push(v);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 领导们的部门人数变更</span></span><br><span class="line">      <span class="keyword">if</span> (memberMap[v].memberList.indexOf(member) === <span class="number">-1</span>) &#123;</span><br><span class="line">        memberMap[v].memberList.push(member);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> result = [];</span><br><span class="line">  operations.forEach(<span class="function">(<span class="params">[type, member, coin]</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 给成员发，该成员及领导们的部门 coin += coin</span></span><br><span class="line">    <span class="keyword">if</span> (type === <span class="number">1</span>) &#123;</span><br><span class="line">      memberMap[member].coin += coin;</span><br><span class="line">      memberMap[member].leaderList.forEach(<span class="function">(<span class="params">v</span>) =&gt;</span> (memberMap[v].coin += +coin));</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> addCoin = coin * (memberMap[member].memberList.length + <span class="number">1</span>);</span><br><span class="line">    <span class="comment">// 给成员及其下属发</span></span><br><span class="line">    <span class="keyword">if</span> (type === <span class="number">2</span>) &#123;</span><br><span class="line">      <span class="comment">// 该成员及领导们的部门 coin += 人数 * coin</span></span><br><span class="line">      memberMap[member].coin += addCoin;</span><br><span class="line">      memberMap[member].leaderList.forEach(</span><br><span class="line">        (v) =&gt;</span><br><span class="line">          (memberMap[v].coin += addCoin)</span><br><span class="line">      );</span><br><span class="line">      <span class="comment">// 下属们的部门 coin += 下属的部门人数 * coin</span></span><br><span class="line">      memberMap[member].memberList.forEach(<span class="function"><span class="params">v</span> =&gt;</span> &#123;</span><br><span class="line">        memberMap[v].coin += coin * (memberMap[v].memberList.length + <span class="number">1</span>)</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回部门 coin</span></span><br><span class="line">    result.push(memberMap[member].coin % <span class="number">1000000007</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
+<h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><p><a href="https://leetcode.cn/submissions/detail/398908470/testcase/" target="_blank" rel="noopener">https://leetcode.cn/submissions/detail/398908470/testcase/</a></p>
+<p>没错的测试用例执行还是超！时！了！<br>// TODO 未完待续</p>
 
       
     </div>
@@ -107,11 +113,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2023/02/23/css/position/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/02/23/javascript/leetcode_thief/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          position 定位
+          力扣算法题2-打家劫舍-草稿
         
       </div>
     </a>
@@ -174,19 +180,19 @@
           </li>
         
           <li>
-            <a href="/2023/01/31/javascript/leetcode_coin/">力扣算法题1-发奖金</a>
+            <a href="/2023/02/23/javascript/leetcode_fruits/">力扣算法题3-重排水果-草稿</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/23/javascript/leetcode_thief/">力扣算法题2-打家劫舍-草稿</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/31/javascript/leetcode_coin/">力扣算法题1-发 Leet coin-草稿</a>
           </li>
         
           <li>
             <a href="/2023/01/31/fullstack/mongodb/">mongodb-安装于使用</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/01/javascript/promise/">手写 Promise</a>
-          </li>
-        
-          <li>
-            <a href="/2020/02/21/css/BFC/">BFC-草稿</a>
           </li>
         
       </ul>
