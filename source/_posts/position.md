@@ -1,5 +1,6 @@
 ---
 title: position 定位
+tags: CSS
 ---
 在学习 position 之前，先来看一下几个适用于所有 css 属性的值： inherit、initial、unset、revert、all
 

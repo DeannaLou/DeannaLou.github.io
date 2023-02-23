@@ -1,3 +1,9 @@
+---
+title: 力扣算法题1-发奖金
+date: 2023-01-31
+tags: Javascript
+---
+
 ## 题目
 https://leetcode.cn/problems/coin-bonus
 

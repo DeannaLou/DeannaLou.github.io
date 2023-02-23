@@ -1,6 +1,7 @@
 ---
  title: js 中的隐式转换
  date: 2018-06-24
+ tags: Javascript
 ---
 
 ## js 的值类型

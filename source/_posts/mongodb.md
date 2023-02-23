@@ -1,3 +1,8 @@
+---
+title: mongodb-安装于使用
+date: 2023-01-31
+tags: 全栈
+---
 ## mongodb 安装与使用
 
 ### 安装

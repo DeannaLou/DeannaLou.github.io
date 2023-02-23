@@ -1,6 +1,7 @@
 ---
 title: 手写 Promise
 date: 2020-08-01
+tags: Javascript
 ---
 
 ## Promise 是什么
