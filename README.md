@@ -5,7 +5,7 @@
 
 ### 编辑博客
 到 /source/_posts 中编辑 md 或新增 md 文件
-tags: Javascript | CSS | 生活中的小确幸 | 全栈 | 浏览器原理
+![markdown 语法](https://markdown.com.cn/basic-syntax/images.html)
 
 ### hexo g
 生成页面
