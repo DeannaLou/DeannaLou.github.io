@@ -153,9 +153,9 @@
 
 
   
-    <article id="post-javascript/leetcode_fruits" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-leetcode/difficult/fruits" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2023/02/23/javascript/leetcode_fruits/" class="article-date">
+    <a href="/2023/02/23/leetcode/difficult/fruits/" class="article-date">
   <time datetime="2023-02-22T16:00:00.000Z" itemprop="datePublished">2023-02-23</time>
 </a>
     
@@ -167,7 +167,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/02/23/javascript/leetcode_fruits/">力扣算法题3-重排水果-草稿</a>
+      <a class="article-title" href="/2023/02/23/leetcode/difficult/fruits/">力扣算法3-重排水果-草稿</a>
     </h1>
   
 
@@ -181,10 +181,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://deannalou.github.io/2023/02/23/javascript/leetcode_fruits/" data-id="cleguzr100000paoalg1z2qyg" class="article-share-link">Share</a>
+      <a data-url="http://deannalou.github.io/2023/02/23/leetcode/difficult/fruits/" data-id="clej99xsz000hf8tz8hhxgrzd" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
 
     </footer>
   </div>
@@ -193,9 +193,9 @@
 
 
   
-    <article id="post-javascript/leetcode_thief" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-leetcode/normal/thief" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2023/02/23/javascript/leetcode_thief/" class="article-date">
+    <a href="/2023/02/23/leetcode/normal/thief/" class="article-date">
   <time datetime="2023-02-22T16:00:00.000Z" itemprop="datePublished">2023-02-23</time>
 </a>
     
@@ -207,7 +207,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/02/23/javascript/leetcode_thief/">力扣算法题2-打家劫舍-草稿</a>
+      <a class="article-title" href="/2023/02/23/leetcode/normal/thief/">力扣算法2-打家劫舍-草稿</a>
     </h1>
   
 
@@ -217,71 +217,27 @@
       
         <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.cn/problems/house-robber-iv/" target="_blank" rel="noopener">https://leetcode.cn/problems/house-robber-iv/</a></p>
 <h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>初步思路是先获取窃取房屋的组合情况、再取得每一个组合的最高金额、再拿到所有最高金额中最小值。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> minCapability = <span class="function"><span class="keyword">function</span> (<span class="params">nums, k</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (k === <span class="number">1</span>) <span class="keyword">return</span> <span class="built_in">Math</span>.min(...nums);</span><br><span class="line">  <span class="comment">// 1、窃取房屋的组合情况</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">getNextIndex</span>(<span class="params">index, count, number</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 如果后边的房间不满足窃取规则，不做任何操作</span></span><br><span class="line">    <span class="keyword">if</span> (nums.length - index - <span class="number">1</span> &lt; <span class="number">2</span> * (k - count)) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span> (k === count + <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="comment">// 如果是最后一个可窃取的房间，那么拿到后边房间都可以成为组合，返回最小值即可</span></span><br><span class="line">      <span class="keyword">if</span> (index + <span class="number">2</span> === nums.length - <span class="number">1</span>) <span class="keyword">return</span> <span class="built_in">Math</span>.min(number, nums[index + <span class="number">2</span>]);</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Math</span>.min(number, <span class="built_in">Math</span>.min(...nums.slice(index + <span class="number">2</span>)));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 3、返回最高金额列表中的最小值</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.min(</span><br><span class="line">      ...nums</span><br><span class="line">        .slice(index + <span class="number">2</span>)</span><br><span class="line">        .map(<span class="function">(<span class="params">sec, secIdx</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="comment">// 2、拿到组合中最高金额</span></span><br><span class="line">          <span class="keyword">return</span> getNextIndex(index + <span class="number">2</span> + secIdx, count + <span class="number">1</span>, <span class="built_in">Math</span>.max(number, sec));</span><br><span class="line">        &#125;)</span><br><span class="line">        .filter(<span class="function">(<span class="params">v</span>) =&gt;</span> v)</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 3、返回最高金额列表中的最小值</span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.min(...nums.map(<span class="function">(<span class="params">item, index</span>) =&gt;</span> getNextIndex(index, <span class="number">1</span>, item)).filter(<span class="function">(<span class="params">v</span>) =&gt;</span> v));</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> minCapability = <span class="function"><span class="keyword">function</span> (<span class="params">nums, k</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (k === <span class="number">1</span>) <span class="keyword">return</span> <span class="built_in">Math</span>.min(...nums);</span><br><span class="line">  <span class="comment">// 1、窃取房屋的组合情况</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">getNextIndex</span>(<span class="params">index, count, number</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 如果后边的房间不满足窃取规则，不做任何操作</span></span><br><span class="line">    <span class="keyword">if</span> (nums.length - index - <span class="number">1</span> &lt; <span class="number">2</span> * (k - count)) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span> (k === count + <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="comment">// 如果是最后一个可窃取的房间，那么拿到后边房间都可以成为组合，返回最小值即可</span></span><br><span class="line">      <span class="keyword">if</span> (index + <span class="number">2</span> === nums.length - <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Math</span>.min(number, nums[index + <span class="number">2</span>]);</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Math</span>.min(number, <span class="built_in">Math</span>.min(...nums.slice(index + <span class="number">2</span>)));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 3、返回最高金额列表中的最小值</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.min(</span><br><span class="line">      ...nums</span><br><span class="line">        .slice(index + <span class="number">2</span>)</span><br><span class="line">        .map(<span class="function">(<span class="params">sec, secIdx</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="comment">// 2、拿到组合中最高金额</span></span><br><span class="line">          <span class="keyword">return</span> getNextIndex(</span><br><span class="line">            index + <span class="number">2</span> + secIdx,</span><br><span class="line">            count + <span class="number">1</span>,</span><br><span class="line">            <span class="built_in">Math</span>.max(number, sec)</span><br><span class="line">          );</span><br><span class="line">        &#125;)</span><br><span class="line">        .filter(<span class="function">(<span class="params">v</span>) =&gt;</span> v)</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 3、返回最高金额列表中的最小值</span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.min(</span><br><span class="line">    ...nums.map(<span class="function">(<span class="params">item, index</span>) =&gt;</span> getNextIndex(index, <span class="number">1</span>, item)).filter(<span class="function">(<span class="params">v</span>) =&gt;</span> v)</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <p>测试一下，好使。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// minCapability([5038,3053,2825,3638,4648,3259,4948,4248,4940,2834,109,5224,5097,4708,2162,3438,4152,4134,551,3961,2294,3961,1327,2395,1002,763,4296,3147,5069,2156,572,1261,4272,4158,5186,2543,5055,4735,2325,1206,1019,1257,5048,1563,3507,4269,5328,173,5007,2392,967,2768,86,3401,3667,4406,4487,876,1530,819,1320,883,1101,5317,2305,89,788,1603,3456,5221,1910,3343,4597], 28)</span></span><br></pre></td></tr></table></figure>
 
-<p>但是太慢，leetCode 还是过不去！<br>// TODO 未完待续</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 思路：</span></span><br><span class="line"><span class="comment"> * 第一步：先找到所有的组合情况</span></span><br><span class="line"><span class="comment"> * 第二步：拿到每一组中最高的数字，形成新的数组</span></span><br><span class="line"><span class="comment"> * 第三步：拿到新数组中最低的数字</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 例如有10个元素，取3家，组合有：</span></span><br><span class="line"><span class="comment"> * - 0-2-4~10/0~1-3-5~10/0~2-4-6~10/0~3-5-7~10/0~4-6-8~10/0~5-7-9~10/0~6-8-10</span></span><br><span class="line"><span class="comment"> * 例如有10个元素，取4家，组合有：</span></span><br><span class="line"><span class="comment"> * - 0-2-4-6~10</span></span><br><span class="line"><span class="comment"> * - 0-2-5-7~10/0~1-3-5-7~10/  </span></span><br><span class="line"><span class="comment"> * - 0-2-6-8~10/0~1-3-6-8~10/0~2-4-6-8~10/</span></span><br><span class="line"><span class="comment"> * - 0-2-7-9~10/0~1-3-7-9~10/0~2-4-7-9~10/0~3-5-7-9~10</span></span><br><span class="line"><span class="comment"> * - 0-2-8-10  /0~1-3-8-10  /0~2-4-8-10  /0~3-5-8-10  /0~4-6-8-10</span></span><br><span class="line"><span class="comment"> * 例如有10个元素，取5家，组合有：</span></span><br><span class="line"><span class="comment"> * - 0-2-4-6-8~10</span></span><br><span class="line"><span class="comment"> * - 0-2-4-7-9~10/0-2~3-5-7-9~10/0~1-3-5-7-9~10</span></span><br><span class="line"><span class="comment"> * - 0-2-4-8-10  /0-2~3-5-8-10  /0~1-3-5-8-10  /0-2~4-6-8-10  /0~2-4-6-8-10</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> minCapability = <span class="function"><span class="keyword">function</span> (<span class="params">nums, k</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (k === <span class="number">1</span>) <span class="keyword">return</span> <span class="built_in">Math</span>.min(...nums);</span><br><span class="line">  nums.forEach(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">    </span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://deannalou.github.io/2023/02/23/javascript/leetcode_thief/" data-id="cleguzr150001paoaortpvimy" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-javascript/leetcode_coin" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2023/01/31/javascript/leetcode_coin/" class="article-date">
-  <time datetime="2023-01-30T16:00:00.000Z" itemprop="datePublished">2023-01-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/31/javascript/leetcode_coin/">力扣算法题1-发 Leet coin-草稿</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.cn/problems/coin-bonus" target="_blank" rel="noopener">https://leetcode.cn/problems/coin-bonus</a></p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>最开始的思路是:</p>
+<p>但是太慢，leetCode 还是过不去！<br>题为求能偷的 k 间房屋中最小金额。于是想到用二分法来做：</p>
 <ol>
-<li>遍历 leadership，建一个 map 表示领导到直属下级的关系，类似 <code>{ 1: { coin, memberList: [2,4,6] }</code></li>
-<li>遍历 operations，如果遇到方式 1 就增加 map[1].coin，遇到方式 2 就拿到所有子下属（递归遍历 map[leader].memberList 拿到所有子下属），并增加他们的 coin，遇到方式 3 再拿到所有子下属的 coin 加和。</li>
+<li>对金额先做二分，设定两个指针，一个指最左，一个指最右，设定一个 mid 值为此平均值</li>
+<li>判断 mid 是否符合 k 间房屋的设定；遍历 nums 中所有小于 mid 的值，存在不相邻的 k 个即符合设定</li>
+<li>如果符合说明它还可能不是最小的金额，要往左查找；如果不符合往右查找</li>
 </ol>
-<p>代码很快就写完了，但是执行超时！于是重新审视这道题，如果第 2 步中的那道所有子下属列表的操作能在第 1 步中拿到，那么就不需要多次去遍历了，修改如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bonus = <span class="function"><span class="keyword">function</span> (<span class="params">n, leadership, operations</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 此时把每个人的上级、下级的关系静态化，而不是只记录直系领导和下属，是处于性能的考虑。</span></span><br><span class="line">  <span class="comment">// operations 传参中会多次要求输出，如果每一次输出时都临时遍历某员工的上级下级，成本是巨大的</span></span><br><span class="line">  <span class="keyword">let</span> memberMap = &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 1: &#123;</span></span><br><span class="line"><span class="comment">     *  memberList: [], // 存储部门下所有的人</span></span><br><span class="line"><span class="comment">     *  leaderList: [], // 存储此人的领导们</span></span><br><span class="line"><span class="comment">     *  coin: 0, // 存储部门所有人获得的 coin 之和</span></span><br><span class="line"><span class="comment">     * &#125;</span></span><br><span class="line"><span class="comment">     * */</span></span><br><span class="line">  &#125;;</span><br><span class="line">  leadership.forEach(<span class="function">(<span class="params">[leader, member]</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!memberMap[leader])</span><br><span class="line">      memberMap[leader] = &#123;</span><br><span class="line">        memberList: [], <span class="comment">// 可用 Set 也可Array，但执行次数多的情况下 Array 性能比 Set 好</span></span><br><span class="line">        leaderList: [],</span><br><span class="line">        coin: <span class="number">0</span>,</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">if</span> (!memberMap[member])</span><br><span class="line">      memberMap[member] = &#123;</span><br><span class="line">        memberList: [], </span><br><span class="line">        leaderList: [],</span><br><span class="line">        coin: <span class="number">0</span>,</span><br><span class="line">      &#125;;</span><br><span class="line">    memberMap[member].leaderList.push(leader);</span><br><span class="line">    memberMap[leader].memberList.push(member);</span><br><span class="line">    memberMap[leader].leaderList.forEach(<span class="function">(<span class="params">v</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 成员的领导人数变更。领导的领导也是领导</span></span><br><span class="line">      <span class="keyword">if</span> (memberMap[member].leaderList.indexOf(v) === <span class="number">-1</span>) &#123; <span class="comment">// indexOf 的性能比 some 的性能好</span></span><br><span class="line">        memberMap[member].leaderList.push(v);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 领导们的部门人数变更</span></span><br><span class="line">      <span class="keyword">if</span> (memberMap[v].memberList.indexOf(member) === <span class="number">-1</span>) &#123;</span><br><span class="line">        memberMap[v].memberList.push(member);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> result = [];</span><br><span class="line">  operations.forEach(<span class="function">(<span class="params">[type, member, coin]</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 给成员发，该成员及领导们的部门 coin += coin</span></span><br><span class="line">    <span class="keyword">if</span> (type === <span class="number">1</span>) &#123;</span><br><span class="line">      memberMap[member].coin += coin;</span><br><span class="line">      memberMap[member].leaderList.forEach(<span class="function">(<span class="params">v</span>) =&gt;</span> (memberMap[v].coin += +coin));</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> addCoin = coin * (memberMap[member].memberList.length + <span class="number">1</span>);</span><br><span class="line">    <span class="comment">// 给成员及其下属发</span></span><br><span class="line">    <span class="keyword">if</span> (type === <span class="number">2</span>) &#123;</span><br><span class="line">      <span class="comment">// 该成员及领导们的部门 coin += 人数 * coin</span></span><br><span class="line">      memberMap[member].coin += addCoin;</span><br><span class="line">      memberMap[member].leaderList.forEach(</span><br><span class="line">        (v) =&gt;</span><br><span class="line">          (memberMap[v].coin += addCoin)</span><br><span class="line">      );</span><br><span class="line">      <span class="comment">// 下属们的部门 coin += 下属的部门人数 * coin</span></span><br><span class="line">      memberMap[member].memberList.forEach(<span class="function"><span class="params">v</span> =&gt;</span> &#123;</span><br><span class="line">        memberMap[v].coin += coin * (memberMap[v].memberList.length + <span class="number">1</span>)</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回部门 coin</span></span><br><span class="line">    result.push(memberMap[member].coin % <span class="number">1000000007</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; nums 房屋及其价值</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; k 最少能偷多少家</span></span><br><span class="line"><span class="comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> minCapability = <span class="function"><span class="keyword">function</span> (<span class="params">nums, k</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> L = <span class="built_in">Math</span>.min(...nums);</span><br><span class="line">  <span class="keyword">let</span> R = <span class="built_in">Math</span>.max(...nums);</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">check</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (nums[i] &lt;= n) &#123;</span><br><span class="line">        cnt++;</span><br><span class="line">        i++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt &gt;= k;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span> (L &lt; R) &#123;</span><br><span class="line">    <span class="keyword">let</span> mid = <span class="built_in">Math</span>.floor((L + R) / <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span> (check(mid)) &#123;</span><br><span class="line">      R = mid;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      L = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> R;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><p><a href="https://leetcode.cn/submissions/detail/398908470/testcase/" target="_blank" rel="noopener">https://leetcode.cn/submissions/detail/398908470/testcase/</a></p>
-<p>没错的测试用例执行还是超！时！了！<br>// TODO 未完待续</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://deannalou.github.io/2023/01/31/javascript/leetcode_coin/" data-id="clegss4hj0008jvoam15u2mso" class="article-share-link">Share</a>
+      <a data-url="http://deannalou.github.io/2023/02/23/leetcode/normal/thief/" data-id="clej9a6bs000jf8tzjdq32vpi" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
 
     </footer>
   </div>
@@ -340,6 +296,55 @@
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/全栈/">全栈</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode/difficult/coin" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/01/31/leetcode/difficult/coin/" class="article-date">
+  <time datetime="2023-01-30T16:00:00.000Z" itemprop="datePublished">2023-01-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/31/leetcode/difficult/coin/">力扣算法1-发 Leet coin-草稿</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.cn/problems/coin-bonus" target="_blank" rel="noopener">https://leetcode.cn/problems/coin-bonus</a></p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>最开始的思路是:</p>
+<ol>
+<li>遍历 leadership，建一个 map 表示领导到直属下级的关系，类似 <code>{ 1: { coin, memberList: [2,4,6] }</code></li>
+<li>遍历 operations，如果遇到方式 1 就增加 map[1].coin，遇到方式 2 就拿到所有子下属（递归遍历 map[leader].memberList 拿到所有子下属），并增加他们的 coin，遇到方式 3 再拿到所有子下属的 coin 加和。</li>
+</ol>
+<p>代码很快就写完了，但是执行超时！于是重新审视这道题，如果第 2 步中的那道所有子下属列表的操作能在第 1 步中拿到，那么就不需要多次去遍历了，修改如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bonus = <span class="function"><span class="keyword">function</span> (<span class="params">n, leadership, operations</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 此时把每个人的上级、下级的关系静态化，而不是只记录直系领导和下属，是处于性能的考虑。</span></span><br><span class="line">  <span class="comment">// operations 传参中会多次要求输出，如果每一次输出时都临时遍历某员工的上级下级，成本是巨大的</span></span><br><span class="line">  <span class="keyword">let</span> memberMap = &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 1: &#123;</span></span><br><span class="line"><span class="comment">     *  memberList: [], // 存储部门下所有的人</span></span><br><span class="line"><span class="comment">     *  leaderList: [], // 存储此人的领导们</span></span><br><span class="line"><span class="comment">     *  coin: 0, // 存储部门所有人获得的 coin 之和</span></span><br><span class="line"><span class="comment">     * &#125;</span></span><br><span class="line"><span class="comment">     * */</span></span><br><span class="line">  &#125;;</span><br><span class="line">  leadership.forEach(<span class="function">(<span class="params">[leader, member]</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!memberMap[leader])</span><br><span class="line">      memberMap[leader] = &#123;</span><br><span class="line">        memberList: [], <span class="comment">// 可用 Set 也可Array，但执行次数多的情况下 Array 性能比 Set 好</span></span><br><span class="line">        leaderList: [],</span><br><span class="line">        coin: <span class="number">0</span>,</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">if</span> (!memberMap[member])</span><br><span class="line">      memberMap[member] = &#123;</span><br><span class="line">        memberList: [], </span><br><span class="line">        leaderList: [],</span><br><span class="line">        coin: <span class="number">0</span>,</span><br><span class="line">      &#125;;</span><br><span class="line">    memberMap[member].leaderList.push(leader);</span><br><span class="line">    memberMap[leader].memberList.push(member);</span><br><span class="line">    memberMap[leader].leaderList.forEach(<span class="function">(<span class="params">v</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 成员的领导人数变更。领导的领导也是领导</span></span><br><span class="line">      <span class="keyword">if</span> (memberMap[member].leaderList.indexOf(v) === <span class="number">-1</span>) &#123; <span class="comment">// indexOf 的性能比 some 的性能好</span></span><br><span class="line">        memberMap[member].leaderList.push(v);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 领导们的部门人数变更</span></span><br><span class="line">      <span class="keyword">if</span> (memberMap[v].memberList.indexOf(member) === <span class="number">-1</span>) &#123;</span><br><span class="line">        memberMap[v].memberList.push(member);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> result = [];</span><br><span class="line">  operations.forEach(<span class="function">(<span class="params">[type, member, coin]</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 给成员发，该成员及领导们的部门 coin += coin</span></span><br><span class="line">    <span class="keyword">if</span> (type === <span class="number">1</span>) &#123;</span><br><span class="line">      memberMap[member].coin += coin;</span><br><span class="line">      memberMap[member].leaderList.forEach(<span class="function">(<span class="params">v</span>) =&gt;</span> (memberMap[v].coin += +coin));</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> addCoin = coin * (memberMap[member].memberList.length + <span class="number">1</span>);</span><br><span class="line">    <span class="comment">// 给成员及其下属发</span></span><br><span class="line">    <span class="keyword">if</span> (type === <span class="number">2</span>) &#123;</span><br><span class="line">      <span class="comment">// 该成员及领导们的部门 coin += 人数 * coin</span></span><br><span class="line">      memberMap[member].coin += addCoin;</span><br><span class="line">      memberMap[member].leaderList.forEach(</span><br><span class="line">        (v) =&gt;</span><br><span class="line">          (memberMap[v].coin += addCoin)</span><br><span class="line">      );</span><br><span class="line">      <span class="comment">// 下属们的部门 coin += 下属的部门人数 * coin</span></span><br><span class="line">      memberMap[member].memberList.forEach(<span class="function"><span class="params">v</span> =&gt;</span> &#123;</span><br><span class="line">        memberMap[v].coin += coin * (memberMap[v].memberList.length + <span class="number">1</span>)</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回部门 coin</span></span><br><span class="line">    result.push(memberMap[member].coin % <span class="number">1000000007</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><p><a href="https://leetcode.cn/submissions/detail/398908470/testcase/" target="_blank" rel="noopener">https://leetcode.cn/submissions/detail/398908470/testcase/</a></p>
+<p>没错的测试用例执行还是超！时！了！<br>// TODO 未完待续</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://deannalou.github.io/2023/01/31/leetcode/difficult/coin/" data-id="clej99gl4000ff8tztfxjq6y6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
 
     </footer>
   </div>
@@ -814,7 +819,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/全栈/">全栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器原理/">浏览器原理</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/全栈/">全栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器原理/">浏览器原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li></ul>
     </div>
   </div>
 
@@ -824,7 +829,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/全栈/" style="font-size: 10px;">全栈</a> <a href="/tags/浏览器原理/" style="font-size: 10px;">浏览器原理</a>
+      <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/Javascript/" style="font-size: 15px;">Javascript</a> <a href="/tags/全栈/" style="font-size: 10px;">全栈</a> <a href="/tags/浏览器原理/" style="font-size: 10px;">浏览器原理</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
     </div>
   </div>
 
@@ -850,19 +855,19 @@
           </li>
         
           <li>
-            <a href="/2023/02/23/javascript/leetcode_fruits/">力扣算法题3-重排水果-草稿</a>
+            <a href="/2023/02/23/leetcode/difficult/fruits/">力扣算法3-重排水果-草稿</a>
           </li>
         
           <li>
-            <a href="/2023/02/23/javascript/leetcode_thief/">力扣算法题2-打家劫舍-草稿</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/31/javascript/leetcode_coin/">力扣算法题1-发 Leet coin-草稿</a>
+            <a href="/2023/02/23/leetcode/normal/thief/">力扣算法2-打家劫舍-草稿</a>
           </li>
         
           <li>
             <a href="/2023/01/31/fullstack/mongodb/">mongodb-安装于使用</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/31/leetcode/difficult/coin/">力扣算法1-发 Leet coin-草稿</a>
           </li>
         
       </ul>

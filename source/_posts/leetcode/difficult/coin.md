@@ -12,7 +12,7 @@ https://leetcode.cn/problems/coin-bonus
 1. 遍历 leadership，建一个 map 表示领导到直属下级的关系，类似 <code>{ 1: { coin, memberList: [2,4,6] }</code>
 2. 遍历 operations，如果遇到方式 1 就增加 map[1].coin，遇到方式 2 就拿到所有子下属（递归遍历 map[leader].memberList 拿到所有子下属），并增加他们的 coin，遇到方式 3 再拿到所有子下属的 coin 加和。
 
-代码很快就写完了，但是执行超时！于是重新审视这道题，如果第 2 步中的那道所有子下属列表的操作能在第 1 步中拿到，那么就不需要多次去遍历了，修改如下：
+代码很快就写完了，但是执行超时！
 
 ```javascript
 var bonus = function (n, leadership, operations) {
@@ -85,6 +85,3 @@ var bonus = function (n, leadership, operations) {
 ```
 ## 测试用例
 https://leetcode.cn/submissions/detail/398908470/testcase/
-
-没错的测试用例执行还是超！时！了！
-// TODO 未完待续
